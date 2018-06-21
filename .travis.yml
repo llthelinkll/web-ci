@@ -10,6 +10,8 @@ jobs:
         provider: heroku
         app: thawing-earth-71327
         api_key: $HEROKU_AUTH_TOKEN
+        on:
+          tags: true
     - stage: test staging
       script: 'curl http://www.secretbase.pw'
     # - stage: deploy to production
