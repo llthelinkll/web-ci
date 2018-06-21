@@ -1,0 +1,21 @@
+jobs:
+  include:
+    - stage: unit tests
+      script: "npm test"
+    - stage: unit tests
+      script: "npm test"
+    - stage: deploy to staging
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        app: thawing-earth-71327
+        api_key: $HEROKU_AUTH_TOKEN
+    - stage: test staging
+      script: 'curl http://www.secretbase.pw'
+    # - stage: deploy to production
+    #   script: skip
+    #   deploy:
+    #     <<: *heroku
+    #     app: sf-stages-production
+    # - stage: test production
+    #   script: 'curl http://www.secretbase.pw'
