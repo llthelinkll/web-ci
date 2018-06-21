@@ -14,6 +14,8 @@ jobs:
           tags: true
     - stage: test staging
       script: 'curl http://www.secretbase.pw'
+      on:
+        tags: true
     # - stage: deploy to production
     #   script: skip
     #   deploy:
