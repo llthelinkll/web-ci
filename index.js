@@ -25,6 +25,6 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/threejs', (req, res) => res.render('pages/threejs'))
+  .get('/iwin', (req, res) => res.render('iwin',{page:'Home', menuId:'home'}))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

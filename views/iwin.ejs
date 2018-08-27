@@ -1,0 +1,125 @@
+<html>
+	<head>
+    <% include partials/head %>
+	</head>
+	<body>
+		<% include partials/menu %>
+		
+		<div class="container-fluid bg-3 text-center">    
+		  <div class="row">
+				
+		    <div class="col-sm-2">
+		    </div>
+				
+		    <div class="col-sm-8"> 
+					
+					<div class="row">
+						
+						<!-- details menu -->
+						<div class="col-md-4" >
+							<div class="row">
+								<div class="col-md-2"></div>
+								<div class="col-md-8">
+									
+									<div class="row">
+										<div class="col-md12">
+											door type
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md12">
+											details
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<button type="button" name="button">Save</button>
+										</div>
+										<div class="col-md-6">
+											<button type="button" name="button">...</button>
+										</div>
+									</div>
+									
+								</div>
+								<div class="col-md-2"></div>
+								
+							</div>
+			      </div>
+						
+						<!-- render menu -->
+			      <div class="col-md-8">
+							
+							<!-- info -->
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-4">Door 1</div>
+										<div class="col-md-3"></div>
+										<div class="col-md-4">Price 1000 Baht</div>
+										
+									</div>
+								</div>
+							</div>
+							
+							<!-- renderer -->
+							<div class="row">
+								<div class="col-md-12" id="viewContainer">
+								</div>
+							</div>
+							
+			      </div>
+			      
+			    </div>
+					
+		    </div>
+				
+		    <div class="col-sm-2"> 
+		    </div>
+				
+		  </div>
+		</div>
+
+		
+		
+	</body>
+	<% include partials/scripts %>
+	
+	<script>
+	
+		// var width = window.innerWidth;
+		// var height = window.innerHeight;
+		var width = 200;
+		var height = 200;
+		
+		var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
+
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize( width, height );
+		
+		// add to container
+		var container = document.getElementById("viewContainer");
+		container.appendChild( renderer.domElement );
+
+		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+		var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+		var cube = new THREE.Mesh( geometry, material );
+		scene.add( cube );
+
+		camera.position.z = 5;
+
+		var animate = function () {
+			requestAnimationFrame( animate );
+
+			cube.rotation.x += 0.01;
+			cube.rotation.y += 0.01;
+
+			renderer.render( scene, camera );
+		};
+
+		animate();
+	</script>
+</html>
